@@ -18,7 +18,7 @@ steps:
     displayName: 'Running npm install and build'
   - script: docker build -t $(dockerId)/$(imageName)  .
   - script: docker login -u $(user) -p $(pswd) sicotin.azurecr.io
-  - script: docker push -t $(dockerId)/$(imageName)
+  - script: docker push $(dockerId)/$(imageName)
   - task: CopyFiles@2
     inputs:
       sourceFolder: '$(System.DefaultWorkingDirectory)/public'
