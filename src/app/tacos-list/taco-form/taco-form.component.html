@@ -1,0 +1,46 @@
+<mat-card class="header">Tacos</mat-card>
+
+<mat-card class="recipe">
+  <form [formGroup]="tacosForm" (ngSubmit)="onSubmit()">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Name" formControlName="title">
+        </mat-form-field>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <h3>Ingredients</h3>
+      <div formArrayName="ingredients">
+        <p *ngFor="let ingredient of ingredients.controls; let i=index">
+          <mat-form-field class="
+        example-full-width">
+            <input name="ingredient" matInput placeholder="Details" [formControlName]="i">
+          </mat-form-field>
+        </p>
+      </div>
+      <mat-divider></mat-divider>
+      <h3>Steps</h3>
+      <div formArrayName="steps">
+        <p *ngFor="let step of steps.controls; let i=index">
+          <mat-form-field class="example-full-width">
+            <input name="step" matInput placeholder="Details" [formControlName]="i">
+          </mat-form-field>
+        </p>
+      </div>
+      <mat-divider></mat-divider>
+      <h5>Tags</h5>
+      <div formArrayName="tags">
+        <p *ngFor="let tag of tags.controls; let i=index">
+          <mat-form-field class="example-full-width">
+            <input name="tag" matInput placeholder="Tag" [formControlName]="i">
+          </mat-form-field>
+        </p>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="cancel()">Cancel</button>
+      <button mat-button type="submit">Save</button>
+    </mat-card-actions>
+  </form>
+</mat-card>
